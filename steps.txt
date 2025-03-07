@@ -1,0 +1,26 @@
+I will start the fullStackOpen's excercise 4.1 by listing the necesary steps to make the solicitude a functional npm project.
+
+0. npm init to initializate project
+
+1. Install dependencies:
+    a - Express 
+    b - mongoose
+    c - nodemon ?
+    d - cors
+    e - dotenv
+
+2. Create index.js file and .env file
+    a - import express, cors and mongoose
+    
+3. Create mongoDB and set connection with the mongoDB
+    a - set connection to mongoDB
+    b - create schema and model
+    c - create models dir with the blog mongoose model and the respective connection in order to isolate this
+
+4. Create routes
+    a - get('/api/blogs')
+    b - post('/api/blogs')
+
+5. Create middleware like logger and errorhandler
+
+6. testing backend with postman or vs code rest
