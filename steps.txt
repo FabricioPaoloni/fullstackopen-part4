@@ -2,7 +2,7 @@ I will start the fullStackOpen's excercise 4.1 by listing the necesary steps to 
 
 0. npm init to initializate project
 
-1. Install dependencies:
+1. Install dependencies: 
     a - Express 
     b - mongoose
     c - nodemon ?
