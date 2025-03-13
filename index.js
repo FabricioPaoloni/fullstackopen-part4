@@ -27,6 +27,25 @@ app.post('/api/blogs', (request, response) => {
         })
 })
 
+
+const unknownEndpoint = (request, response) => {
+    response.status(404).send({ error: 'unknown endpoint' })
+}
+
+app.use(unknownEndpoint)
+
+//error handling
+
+const errorHandler = (error, request, resonse, next) => {
+    console.log(error.message)
+    //personalized error handling here:
+
+
+    next(error)
+}
+
+app.use(errorHandler)
+
 //starting app
 
 const PORT = process.env.PORT | 3003
