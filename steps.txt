@@ -24,3 +24,21 @@ I will start the fullStackOpen's excercise 4.1 by listing the necesary steps to 
 5. Create middleware like logger and errorhandler
 
 6. testing backend with postman or vs code rest
+
+
+Excercise 4.2:
+
+├── index.js
+├── app.js
+├── dist
+│   └── ...
+├── controllers
+│   └── notes.js
+├── models
+│   └── note.js
+├── package-lock.json
+├── package.json
+├── utils
+│   ├── config.js
+│   ├── logger.js
+│   └── middleware.js  
