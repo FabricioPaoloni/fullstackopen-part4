@@ -40,5 +40,5 @@ Excercise 4.2:
 ├── package.json
 ├── utils
 │   ├── config.js
-│   ├── logger.js
+│   ├── logger.js       done
 │   └── middleware.js  

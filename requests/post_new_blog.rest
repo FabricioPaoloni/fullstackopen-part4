@@ -3,8 +3,8 @@ POST http://localhost:3003/api/blogs
 Content-Type: application/json
 
 {
-    "title": "Prueba nro 3",
+    "title": "Prueba nro 4",
     "author": "Fabricio Paoloni",
-    "url": "Url de prueba 3",
-    "likes": 3
+    "url": "Url de prueba 4",
+    "likes": 44
 }
