@@ -28,17 +28,17 @@ I will start the fullStackOpen's excercise 4.1 by listing the necesary steps to 
 
 Excercise 4.2:
 
-├── index.js
+├── index.js           done
 ├── app.js
-├── dist
-│   └── ...
+├── dist               ----
+│   └── ...            ----
 ├── controllers
 │   └── notes.js
 ├── models
-│   └── note.js
-├── package-lock.json
-├── package.json
-├── utils
-│   ├── config.js
+│   └── note.js         
+├── package-lock.json  done
+├── package.json       done
+├── utils               done
+│   ├── config.js       done
 │   ├── logger.js       done
 │   └── middleware.js  
