@@ -29,16 +29,23 @@ I will start the fullStackOpen's excercise 4.1 by listing the necesary steps to 
 Excercise 4.2:
 
 ├── index.js           done
-├── app.js
+├── app.js             done
 ├── dist               ----
 │   └── ...            ----
-├── controllers
-│   └── notes.js
-├── models
-│   └── note.js         
+├── controllers        done
+│   └── blogs.js        done
+├── models              done
+│   └── blog.js           done
 ├── package-lock.json  done
 ├── package.json       done
 ├── utils               done
 │   ├── config.js       done
 │   ├── logger.js       done
-│   └── middleware.js  
+│   └── middleware.js  done
+
+Exercise 4.3:
+
+    1. create utils/list_helper.js      done
+    2. define dummy() function          done
+    3. create tests/***.test.js         done
+    4. creat test script "test": "node --test"      done
