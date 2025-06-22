@@ -59,3 +59,6 @@ En curso -> ya di de alta el test environment e instalé superterst. Queda crear
 -COMPLETADO-
 
 Ejercicio 4.9: Blog List Tests, step 2
+-COMPLETADO-
+
+Ejercicio 4.10: Blog List Tests, step 3 - testear el método POST

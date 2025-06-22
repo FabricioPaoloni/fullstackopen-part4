@@ -41,9 +41,28 @@ test("the unique identifier property is called id", async() =>{
     
     assert(Object.hasOwn(response.body[0], 'id'))
     assert(Object.hasOwn(response.body[1], 'id'))
+})
 
+test('POST creates a new blog successfully', async () => {
+    const newBlog = {
+        title: 'test3',
+        author: 'author3',
+        url: 'http link',
+        likes: 3
+    }
 
-    // console.log(response.body[0])
+    await api.post('/api/blogs')
+        .send(newBlog)
+        .expect(201)
+        .expect('Content-type', /application\/json/)
+
+    blogsAtEnd = await Blog.find({})
+    // console.log(blogsAtEnd)
+    assert.strictEqual(blogsAtEnd.length, initialBlogs.length + 1)
+    assert(blogsAtEnd[2].title, 'test3')
+    assert(blogsAtEnd[2].author, 'author3')
+    assert(blogsAtEnd[2].url, 'http link')
+    assert(blogsAtEnd[2].likes, 3)
 })
 
 after(async () => {
