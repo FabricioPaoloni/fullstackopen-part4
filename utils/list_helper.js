@@ -31,6 +31,10 @@ const favoriteBlog = blogs => {
     return returnOne
 }
 
+const mostBlogs = blogs => {
+    
+}
+
 module.exports = {
     dummy,
     totalLikes,

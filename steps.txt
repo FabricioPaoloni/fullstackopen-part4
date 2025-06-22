@@ -51,3 +51,11 @@ Exercise 4.3:
     4. creat test script "test": "node --test"      done
 
 
+Ejercicio 4.6:
+Tengo que crear una función que reciba un arreglo de BLOGS y devuelva el autor con la mayor cantidad de blogs escritos
+
+Ejercicio 4.8: Blog List Tests, step 1
+En curso -> ya di de alta el test environment e instalé superterst. Queda crear los test y reescribir la app
+-COMPLETADO-
+
+Ejercicio 4.9: Blog List Tests, step 2

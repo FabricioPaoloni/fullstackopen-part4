@@ -4,8 +4,9 @@
   "description": "FullStackOpen part4 - bloglist ",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon index.js",
-    "test": "node --test"
+    "start": "NODE_ENV=production node index.js",
+    "dev": "NODE_ENV=development node --watch index.js",
+    "test": "NODE_ENV=test node --test"
   },
   "author": "Fabricio Paoloni",
   "license": "ISC",
@@ -16,6 +17,7 @@
     "mongoose": "^8.12.1"
   },
   "devDependencies": {
-    "nodemon": "^3.1.9"
+    "nodemon": "^3.1.9",
+    "supertest": "^7.1.1"
   }
 }
