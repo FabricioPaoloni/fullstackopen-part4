@@ -15,7 +15,7 @@ blogsRouter.post('/', (request, response) => {
             response.status(201).json(result)
         })
         .catch(error => {
-            response.send('Error while saving new blog:', error.message)
+            response.status(400).json({error: 'Error while saving new blog:', message: error.message})
         })
 })
 

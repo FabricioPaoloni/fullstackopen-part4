@@ -82,6 +82,32 @@ test('if likes property is missing then default to value 0', async () => {
         assert.strictEqual(blogsAtEnd[2].likes, 0)
 })
 
+test('POST missing title property must fail', async () => {
+    const newBlog = {
+        author: 'exercise 4.12',
+        url: 'http://titleismissing.fail',
+        likes: 412
+    }
+
+    const response = await api.post('/api/blogs')
+        .send(newBlog)
+        .expect(400)
+    // console.log(response)
+})
+
+test('POST missing url property must fail', async () => {
+    const newBlog = {
+        title: 'url property is missing',
+        author: 'exercise 4.12',
+        likes: 412
+    }
+
+    const response = await api.post('/api/blogs')
+        .send(newBlog)
+        .expect(400)
+    // console.log(response)
+})
+
 after(async () => {
     await mongoose.connection.close()
 })
