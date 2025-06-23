@@ -62,3 +62,8 @@ Ejercicio 4.9: Blog List Tests, step 2
 -COMPLETADO-
 
 Ejercicio 4.10: Blog List Tests, step 3 - testear el método POST
+-COMPLETADO-
+
+Ejercicio 4.11: Blog List Tests, step 4 - Chequear que si falta la propiedad likes entonces el valor deault es 0, crear test
+RESOLUCION: modifiqué el blogSchema del archivo /models/blog.js para que likes defaultee a 0, luego cree el test "if likes property is missing then default to value 0"
+-COMPLETADO-

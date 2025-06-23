@@ -46,7 +46,7 @@ test("the unique identifier property is called id", async() =>{
 test('POST creates a new blog successfully', async () => {
     const newBlog = {
         title: 'test3',
-        author: 'author3',
+        author: 'exercise 4.10',
         url: 'http link',
         likes: 3
     }
@@ -60,9 +60,26 @@ test('POST creates a new blog successfully', async () => {
     // console.log(blogsAtEnd)
     assert.strictEqual(blogsAtEnd.length, initialBlogs.length + 1)
     assert(blogsAtEnd[2].title, 'test3')
-    assert(blogsAtEnd[2].author, 'author3')
+    assert(blogsAtEnd[2].author, 'exercise 4.10')
     assert(blogsAtEnd[2].url, 'http link')
     assert(blogsAtEnd[2].likes, 3)
+})
+
+test('if likes property is missing then default to value 0', async () => {
+    const newBlog = {
+        title: 'missing likes property',
+        author: 'exercise 4.11',
+        url: 'some url'        
+    }
+
+    await api.post('/api/blogs')
+        .send(newBlog)
+        .expect(201)
+        .expect('Content-type', /application\/json/)
+
+        blogsAtEnd = await Blog.find({})
+        // console.log(blogsAtEnd)
+        assert.strictEqual(blogsAtEnd[2].likes, 0)
 })
 
 after(async () => {
