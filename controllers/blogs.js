@@ -19,4 +19,14 @@ blogsRouter.post('/', (request, response) => {
         })
 })
 
+blogsRouter.delete('/:id', async (request, response) => {
+    if(request.params.id.length !== 24 ){
+        response.status(400).json({error: 'Invalid ID'})
+    } else {
+        await Blog.findByIdAndDelete(request.params.id)
+        response.status(204).end()
+    }
+    
+})
+
 module.exports = blogsRouter
