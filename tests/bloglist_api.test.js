@@ -119,7 +119,7 @@ describe('Deleting a blog: testing api.delete', () => {
         assert.strictEqual(blogsAtEnd.length, blogsAtBegining.length - 1)
     })
 
-    test('Deleting a blog with invalid id must fail', async() => {
+    test('Deleting a blog with invalid id must fail', async () => {
         const query = await api.get('/api/blogs')
         const blogsAtBegining = query.body
         // console.log(blogsAtBegining)
@@ -132,7 +132,7 @@ describe('Deleting a blog: testing api.delete', () => {
         assert.strictEqual(blogsAtEnd.length, blogsAtBegining.length)
     })
 
-    test('Deleting a blog with empty id must not modify the DB', async() => {
+    test('Deleting a blog with empty id must not modify the DB', async () => {
         const query = await api.get('/api/blogs')
         const blogsAtBegining = query.body
         // console.log(blogsAtBegining)
@@ -143,6 +143,66 @@ describe('Deleting a blog: testing api.delete', () => {
         const blogsAtEnd = query2.body
 
         assert.strictEqual(blogsAtEnd.length, blogsAtBegining.length)
+    })
+})
+
+describe('Testing PUT functionality...', () => {
+    test('changing the numbers of likes of a valid blog', async () => {
+        let query = await api.get('/api/blogs')
+        let blogsAtBegining = query.body
+        // console.log(blogsAtBegining)
+        let updateBlog = {
+            title: blogsAtBegining[0].title,
+            author: blogsAtBegining[0].author,
+            url: blogsAtBegining[0].url,
+            likes: blogsAtBegining[0].likes + 1
+        }
+        
+        let update = await api.put(`/api/blogs/${blogsAtBegining[0].id}`)
+                .send(updateBlog)
+
+        query = await api.get('/api/blogs')
+        blogsAtEnd = query.body
+        // console.log(blogsAtEnd)
+
+        assert.equal(update.status, 200)
+        assert.strictEqual(blogsAtEnd[0].likes, 2)
+    })
+
+    test('changing the numbers of likes of a non existing id', async() => {
+        let query = await api.get('/api/blogs')
+        let blogsAtBegining = query.body
+        let wrongId = '123456789012345678901234'
+        // console.log(blogsAtBegining)
+        let updateBlog = {
+            title: blogsAtBegining[0].title,
+            author: blogsAtBegining[0].author,
+            url: blogsAtBegining[0].url,
+            likes: blogsAtBegining[0].likes + 1
+        }
+        
+        let update = await api.put(`/api/blogs/${wrongId}`)
+                .send(updateBlog)
+
+        assert.equal(update.status, 404)
+    })
+
+    test('changing the numbers of likes of an invalid id', async() => {
+        let query = await api.get('/api/blogs')
+        let blogsAtBegining = query.body
+        let wrongId = '1234567890123456789012'
+        // console.log(blogsAtBegining)
+        let updateBlog = {
+            title: blogsAtBegining[0].title,
+            author: blogsAtBegining[0].author,
+            url: blogsAtBegining[0].url,
+            likes: blogsAtBegining[0].likes + 1
+        }
+        
+        let update = await api.put(`/api/blogs/${wrongId}`)
+                .send(updateBlog)
+
+        assert.equal(update.status, 400)
     })
 })
 

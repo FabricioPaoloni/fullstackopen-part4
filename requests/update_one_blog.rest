@@ -1,0 +1,14 @@
+#id for blog number 1 
+
+put http://localhost:3003/api/blogs/67d0d81fd0351d09895b84a4 
+Content-Type: application/json
+
+{
+    "title": "Prueba nro 1",
+    "author": "Fabricio Paoloni",
+    "url": "Url de prueba",
+    "likes": 5, 
+    "id": "67d0d81fd0351d09895b84a4"
+}
+
+#change the LIKES number to test, check the get_all_blog.rest to verify previous and posterior states

@@ -26,7 +26,21 @@ blogsRouter.delete('/:id', async (request, response) => {
         await Blog.findByIdAndDelete(request.params.id)
         response.status(204).end()
     }
-    
+})
+
+blogsRouter.put('/:id', async (request, response) => {
+    if(request.params.id.length !== 24 ){
+        response.status(400).json({error: 'Invalid ID'})
+    } else {
+        const updatedBlog = request.body
+        let blogToUpdate = await Blog.findById(request.params.id)
+        if (!blogToUpdate){
+            return response.status(404).end()
+        }
+        blogToUpdate.likes = updatedBlog.likes
+        await blogToUpdate.save()
+        response.status(200).json(blogToUpdate)
+    }
 })
 
 module.exports = blogsRouter

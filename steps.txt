@@ -69,6 +69,13 @@ RESOLUCION: modifiqué el blogSchema del archivo /models/blog.js para que likes 
 -COMPLETADO-
 
 Ejercicio 4.12: Blog List Tests, step 5 - Crear 2 tests en los cuales falten las propiedades TITLE y URL. Modificar el backend para que esto de error.
+-COMPLETADO-
 
 Ejercicio 4.13: Blog List Expansions, step 1, Implement functionality for deleting a single blog post resource.
 Agregue la funcionalidad para eliminar un blog. Cree el primer test que verifica que se elimina un blog valido, falta testear que falla si ponemos un id equivocado o id vacio
+-COMPLETADO-
+
+Ejercicio 4.14: Blog List Expansions, step 2
+Implement functionality for updating the information of an individual blog post. Use async/await
+creado test que verifica la correcta actualizacion de un blog valido, el test que verifica el funcionamiento ante un ID que no existe en la lista y el comportamiento ante un ID inválido (longitud inválida).
+-COMPLETADO- 
