@@ -79,3 +79,27 @@ Ejercicio 4.14: Blog List Expansions, step 2
 Implement functionality for updating the information of an individual blog post. Use async/await
 creado test que verifica la correcta actualizacion de un blog valido, el test que verifica el funcionamiento ante un ID que no existe en la lista y el comportamiento ante un ID inválido (longitud inválida).
 -COMPLETADO- 
+
+Ejercicio 4.15: Blog list expansion, step 3
+Implement a way to create new users by doing an HTTP POST request to address api/users. Users have a username, password and name.
+Do not save passwords to the database as clear text, but use the bcrypt library like we did in part 4 chapter Creating users.
+1. Crear el "user model" en la carpeta "models" y el userSchema 
+    -> user.js creado dentro de la carpeta models; creado el User model basado en userSchema
+
+2. Expandir el Schema de los blogs para que tengan información del usuario que los crea, carpeta models archivo blog.js
+    -> archivo actualizado, sumé la propiedad "user" al blogSchema
+
+3. Instalar bcrypt ya que será la librería que maneje la encriptación de las contraseñas
+-> npm install bcrypt -> instalado
+
+4. Crear un nuevo archivo /controllers/users que contenga un nuevo "router" para gestionar los usuarios. También debemos importarlo y ponerlo en uso en el archivo app.js para que gestione las requests en la ruta /api/users
+-> modificado el archivo app.js (import ... app.use ...)
+-> creado /controllers/users.js
+
+5. deinifir uniqueness al atributo username del userSchema 
+-> hecho
+
+
+6. definir algunos tests para la creación de usuarios
+-> de momento sigo, no lo hago, queda para después (siguientes ejercicios)
+
