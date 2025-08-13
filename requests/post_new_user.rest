@@ -2,7 +2,29 @@ POST http://localhost:3003/api/users
 Content-Type: application/json
 
 {
-    "username": "usuario2",
-    "name": "Pruena numero dos",
+    "username": "usuario3",
+    "name": "Prueba numero tres",
     "password": "prueba123"
+}
+
+###
+//posting with an error in the username
+POST http://localhost:3003/api/users
+Content-Type: application/json
+
+{
+    "username": "as",
+    "name": "deberia dar error",
+    "password": "prueba123"
+}
+
+###
+//posting with an error in the password
+POST http://localhost:3003/api/users
+Content-Type: application/json
+
+{
+    "username": "usuario2",
+    "name": "deberia dar error de password",
+    "password": ""
 }

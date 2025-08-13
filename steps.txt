@@ -103,3 +103,19 @@ Do not save passwords to the database as clear text, but use the bcrypt library 
 6. definir algunos tests para la creación de usuarios
 -> de momento sigo, no lo hago, queda para después (siguientes ejercicios)
 
+
+Ejercicio 4.16*: Blog List Expansion, step 4
+Add a feature which adds the following restrictions to creating new users: Both username and password must be given and both must be at least 3 characters long. The username must be unique.
+The operation must respond with a suitable status code and some kind of an error message if an invalid user is created.
+
+Also, implement tests that ensure invalid users are not created and that an invalid add user operation returns a suitable status code and error message.
+
+1. las restricciones las tenemos que hacer en el backend, en el controlador de rutas que gestionan la creación de usuarios.
+-> modificado el errorHandler para que contemple el intento de duplicación de username, devuelve status 400 y error: 'expected `username` to be unique'
+->tengo que crear las validaciones de 3 letras en el backend para username y password
+->HECHOOOO soy un fenómeno, también cree unas pruebas REST para probar el funcionamiento
+
+2. tenemos que crear los tests
+cree /tests/users_api.test.js y algunos test, falta testear POST cuando falla uniqueness, cuando el usuario es menor a tres caracteres y cuando lo es la contraseña
+
+=> COMPLETADO
