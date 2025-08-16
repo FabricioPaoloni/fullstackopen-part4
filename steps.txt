@@ -119,3 +119,16 @@ Also, implement tests that ensure invalid users are not created and that an inva
 cree /tests/users_api.test.js y algunos test, falta testear POST cuando falla uniqueness, cuando el usuario es menor a tres caracteres y cuando lo es la contraseña
 
 => COMPLETADO
+
+Ejercicio 4.17: Blog List Expansion, step 5
+Expand blogs so that each blog contains information on the creator of the blog.
+Modify adding new blogs so that when a new blog is created, any user from the database is designated as its creator (for example the one found first). Implement this according to part 4 chapter populate. Which user is designated as the creator does not matter just yet. The functionality is finished in exercise 4.19.
+Modify listing all blogs so that the creator's user information is displayed like the image in the page; and listing all users also displays the blogs created by each user.
+
+1. Agregar la propiedad user a los blogSchema
+-> listo, lo había hecho previamente
+2. Modificar el método POST de los blogs para que añada info sobre CUALQUIER usuario (en los ejercicios posteriores esto se va a hacer con el usuario correspondiente)
+-> modifiqué a mano la base de datos para que los blogs y los usuarios tengan info suficiente para mostrar (que usario creo los blos y que blogs creo cada usuario)
+-> arbitrariamente puse el primer ID para todos los nuevos POST que se creen (probado con REST funciona)
+-> ahora debo implementar lo de populate
+-> 
