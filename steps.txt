@@ -131,4 +131,15 @@ Modify listing all blogs so that the creator's user information is displayed lik
 -> modifiqué a mano la base de datos para que los blogs y los usuarios tengan info suficiente para mostrar (que usario creo los blos y que blogs creo cada usuario)
 -> arbitrariamente puse el primer ID para todos los nuevos POST que se creen (probado con REST funciona)
 -> ahora debo implementar lo de populate
--> 
+-> listo
+
+=> 4.17 COMPLETADO
+
+Ejercicio 4.18:
+Implement token-based authentication according to part 4 chapter Token authentication.
+
+1. install jsonwebtoken -- done
+2. create the file controllers/login.js -- done
+3. use the loginRouter in the app.js file -- done
+4. create the SECRET variable -- done
+=> COMPLETADO
