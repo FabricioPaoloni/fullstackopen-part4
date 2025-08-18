@@ -16,18 +16,18 @@ blogsRouter.get('/', async (request, response) => {
 })
 
 //auxiliary function that helps us to decode de token later
-const getTokenFrom = request => {
-    const authorization = request.get('authorization')
-    if (authorization && authorization.startsWith('Bearer ')) {
-        return authorization.replace('Bearer ', '') //eliminamos la palabra y el espacio para que solo quede el token
-    }
-    return null
-}
+// const getTokenFrom = request => {
+//     const authorization = request.get('authorization')
+//     if (authorization && authorization.startsWith('Bearer ')) {
+//         return authorization.replace('Bearer ', '') //eliminamos la palabra y el espacio para que solo quede el token
+//     }
+//     return null
+// }
 
 blogsRouter.post('/', async (request, response, next) => {
     let decodedToken;
     try {
-        decodedToken = jwt.verify(getTokenFrom(request), process.env.SECRET)
+        decodedToken = jwt.verify(request.token, process.env.SECRET)
     } catch (error) {
         return next(error)
     }

@@ -149,6 +149,15 @@ Modify adding new blogs so that it is only possible if a valid token is sent wit
 1. editar ./controllers/blogs para que trabaje con los TOKENS -- done
 2. editar el errorHandler para que gestione los errores de tokens -- done
 3. probar la funcionalidad cambiando el post_new_blog.rest usando un token (ejemplo: el del usuario 3) - hecho
+=> COMPLETADO
 
+4.20*: Blog List Expansion, step 8
+This example (a link in the web) from part 4 shows taking the token from the header with the getTokenFrom helper function in controllers/blogs.js.
+If you used the same solution, refactor taking the token to a middleware. The middleware should take the token from the Authorization header and assign it to the token field of the request object.
+In other words, if you register this middleware in the app.js file before all routes, routes can access the token with request.token:
 
+1. Crear el middleware tokenExtractor -- hecho
+2. usar el middleware tokenExtractor en app.js ANTES que las rutas -- hecho
+3. editar blogsRouter para que utilice request.token, la propiedad asignada por el middleware -- hecho
+=> COMPLETADO 
 
