@@ -135,7 +135,7 @@ Modify listing all blogs so that the creator's user information is displayed lik
 
 => 4.17 COMPLETADO
 
-Ejercicio 4.18:
+Ejercicio 4.18: Blog List Expansion, step 6
 Implement token-based authentication according to part 4 chapter Token authentication.
 
 1. install jsonwebtoken -- done
@@ -143,3 +143,12 @@ Implement token-based authentication according to part 4 chapter Token authentic
 3. use the loginRouter in the app.js file -- done
 4. create the SECRET variable -- done
 => COMPLETADO
+
+Ejercicio 4.19: Blog List Expansion, step 7
+Modify adding new blogs so that it is only possible if a valid token is sent with the HTTP POST request. The user identified by the token is designated as the creator of the blog.
+1. editar ./controllers/blogs para que trabaje con los TOKENS -- done
+2. editar el errorHandler para que gestione los errores de tokens -- done
+3. probar la funcionalidad cambiando el post_new_blog.rest usando un token (ejemplo: el del usuario 3) - hecho
+
+
+
