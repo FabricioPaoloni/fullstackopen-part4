@@ -99,7 +99,6 @@ Do not save passwords to the database as clear text, but use the bcrypt library 
 5. deinifir uniqueness al atributo username del userSchema 
 -> hecho
 
-
 6. definir algunos tests para la creación de usuarios
 -> de momento sigo, no lo hago, queda para después (siguientes ejercicios)
 
@@ -161,3 +160,7 @@ In other words, if you register this middleware in the app.js file before all ro
 3. editar blogsRouter para que utilice request.token, la propiedad asignada por el middleware -- hecho
 => COMPLETADO 
 
+4.21*: Blog List Expansion, step 9
+Change the delete blog operation so that a blog can be deleted only by the user who added it. Therefore, deleting a blog is possible only if the token sent with the request is the same as that of the blog's creator.
+1. Modificado el método DELETE del blogRouter para que filtre las solicitudes que no tengan un token válido y las solicitudes de un token válido pero con otro usuario diferente al que creó el blog
+=> completado y testeado con delete_one_blog.rest
