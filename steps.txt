@@ -164,3 +164,13 @@ In other words, if you register this middleware in the app.js file before all ro
 Change the delete blog operation so that a blog can be deleted only by the user who added it. Therefore, deleting a blog is possible only if the token sent with the request is the same as that of the blog's creator.
 1. Modificado el método DELETE del blogRouter para que filtre las solicitudes que no tengan un token válido y las solicitudes de un token válido pero con otro usuario diferente al que creó el blog
 => completado y testeado con delete_one_blog.rest
+
+4.22*: Blog List Expansion, step 10
+Both the new blog creation and blog deletion need to find out the identity of the user who is doing the operation. The middleware tokenExtractor that we did in exercise 4.20 helps but still both the handlers of post and delete operations need to find out who the user holding a specific token is.
+Now create a new middleware called userExtractor that identifies the user related to the request and attaches it to the request object. After registering the middleware, the post and delete handlers should be able to access the user directly by referencing request.user:
+1. Crear un nuevo middleware en el archivo de middleware llamado userExtractor .. done
+2. modificar los metodos post y delete para que ahora utilicen este middleware -- done
+3. USAR este middleware pero solo en las rutas post y delete -- done
+=> COMPLETADO
+
+4.23

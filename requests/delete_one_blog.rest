@@ -1,4 +1,4 @@
-delete http://localhost:3003/api/blogs/68a51ac1783ea600b9677e35
+delete http://localhost:3003/api/blogs/68a53cbf7ff6e672584ae932
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InVzdWFyaW8zIiwiaWQiOiI2ODk3ZWZlODhiZmI4NjljMjcwZjE1YTAiLCJpYXQiOjE3NTU0NzIzMDN9.k3BucPJmWMuQpQ9jJV71RryDAudmtO5S7KfzfFUZuRQ
 
 //testeado con un blog creado por el usuario del token: válido, borró el blog
