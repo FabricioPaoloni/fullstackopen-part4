@@ -133,6 +133,19 @@ test('POST missing url property must fail', async () => {
         .expect(400)
     // console.log(response)
 })
+test('POST without a token to authentify must fail', async () => {
+    const newBlog = {
+        title: 'this post must fail because we dont have a token',
+        author: 'exercise 4.23',
+        utl: 'missingtoken.com',
+        likes: 423
+    }
+
+    const response = await api.post('/api/blogs')
+        .send(newBlog)
+        .expect(401)
+    // console.log(response)
+})
 describe('Deleting a blog: testing api.delete', () => {
     test('deleting a blog in the list must work', async () => {
         const query = await api.get('/api/blogs')
