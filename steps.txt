@@ -173,4 +173,5 @@ Now create a new middleware called userExtractor that identifies the user relate
 3. USAR este middleware pero solo en las rutas post y delete -- done
 => COMPLETADO
 
-4.23
+4.23*: Blog List Expansion, step 11
+After adding token-based authentication the tests for adding a new blog broke down. Fix them. Also, write a new test to ensure adding a blog fails with the proper status code 401 Unauthorized if a token is not provided.

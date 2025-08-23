@@ -4,29 +4,51 @@ const mongoose = require('mongoose')
 const supertest = require('supertest')
 const app = require('../app')
 const Blog = require('../models/blog')
+const User = require('../models/user')
+const jwt = require('jsonwebtoken')
 
 const api = supertest(app)
+
+const initialUsers = [
+    {
+        username: "usuarioTest",
+        name: "Usuario de test",
+        passwordHash: "$2b$10$U5S0rXlQjrMPMg4dex4l4.eh1h4SPskR1zqCPv1PQZN1xbTIJq1wi", 
+        blogs: [],
+    }
+]
 
 const initialBlogs = [
     {
         title: 'test1',
         author: 'user1',
         url: 'https://...',
-        likes: 1
+        likes: 1,
+        // user: testUser.id
     },
     {
         title: 'test2',
         author: 'user2',
         url: 'https://...',
-        likes: 2
+        likes: 2,
+        // user: testUser.id
     }
 ]
-
+let login
 beforeEach(async () => {
+    await User.deleteMany({})
+    let user = new User(initialUsers[0])
+    testUser = await user.save()
+    
+    
+    login = await api.post('/api/login').send({username: testUser.username, password: 'prueba123'})
+    // console.log(login.body)
     await Blog.deleteMany({})
     let blogObject = new Blog(initialBlogs[0])
+    blogObject.user = testUser.id
     await blogObject.save()
     blogObject = new Blog(initialBlogs[1])
+    blogObject.user = testUser.id
     await blogObject.save()
 })
 
@@ -50,9 +72,10 @@ test('POST creates a new blog successfully', async () => {
         url: 'http link',
         likes: 3
     }
-
+    // console.log(login.body.token)
     await api.post('/api/blogs')
         .send(newBlog)
+        .set('authorization', `Bearer ${login.body.token}`)
         .expect(201)
         .expect('Content-type', /application\/json/)
 
@@ -74,6 +97,7 @@ test('if likes property is missing then default to value 0', async () => {
 
     await api.post('/api/blogs')
         .send(newBlog)
+        .set('authorization', `Bearer ${login.body.token}`)
         .expect(201)
         .expect('Content-type', /application\/json/)
 
@@ -91,6 +115,7 @@ test('POST missing title property must fail', async () => {
 
     const response = await api.post('/api/blogs')
         .send(newBlog)
+        .set('authorization', `Bearer ${login.body.token}`)
         .expect(400)
     // console.log(response)
 })
@@ -104,6 +129,7 @@ test('POST missing url property must fail', async () => {
 
     const response = await api.post('/api/blogs')
         .send(newBlog)
+        .set('authorization', `Bearer ${login.body.token}`)
         .expect(400)
     // console.log(response)
 })
@@ -112,7 +138,10 @@ describe('Deleting a blog: testing api.delete', () => {
         const query = await api.get('/api/blogs')
         const blogsAtBegining = query.body
         // console.log(blogsAtBegining)
-        let deleted = await api.delete(`/api/blogs/${blogsAtBegining[1].id}`)
+        let deleted = await api
+            .delete(`/api/blogs/${blogsAtBegining[1].id}`)
+            .set('authorization', `Bearer ${login.body.token}`)
+
         const query2 = await api.get('/api/blogs')
         const blogsAtEnd = query2.body
         // console.log(blogsAtEnd)
@@ -124,7 +153,9 @@ describe('Deleting a blog: testing api.delete', () => {
         const blogsAtBegining = query.body
         // console.log(blogsAtBegining)
         let wrongId = '1234567890123456789034'
-        let notDeleted = await api.delete(`/api/blogs/${wrongId}`)
+        let notDeleted = await api
+            .delete(`/api/blogs/${wrongId}`)
+            .set('authorization', `Bearer ${login.body.token}`)
         // console.log(notDeleted)
         const query2 = await api.get('/api/blogs')
         const blogsAtEnd = query2.body
@@ -157,9 +188,9 @@ describe('Testing PUT functionality...', () => {
             url: blogsAtBegining[0].url,
             likes: blogsAtBegining[0].likes + 1
         }
-        
+
         let update = await api.put(`/api/blogs/${blogsAtBegining[0].id}`)
-                .send(updateBlog)
+            .send(updateBlog)
 
         query = await api.get('/api/blogs')
         blogsAtEnd = query.body
@@ -169,7 +200,7 @@ describe('Testing PUT functionality...', () => {
         assert.strictEqual(blogsAtEnd[0].likes, 2)
     })
 
-    test('changing the numbers of likes of a non existing id', async() => {
+    test('changing the numbers of likes of a non existing id', async () => {
         let query = await api.get('/api/blogs')
         let blogsAtBegining = query.body
         let wrongId = '123456789012345678901234'
@@ -180,14 +211,14 @@ describe('Testing PUT functionality...', () => {
             url: blogsAtBegining[0].url,
             likes: blogsAtBegining[0].likes + 1
         }
-        
+
         let update = await api.put(`/api/blogs/${wrongId}`)
-                .send(updateBlog)
+            .send(updateBlog)
 
         assert.equal(update.status, 404)
     })
 
-    test('changing the numbers of likes of an invalid id', async() => {
+    test('changing the numbers of likes of an invalid id', async () => {
         let query = await api.get('/api/blogs')
         let blogsAtBegining = query.body
         let wrongId = '1234567890123456789012'
@@ -198,9 +229,9 @@ describe('Testing PUT functionality...', () => {
             url: blogsAtBegining[0].url,
             likes: blogsAtBegining[0].likes + 1
         }
-        
+
         let update = await api.put(`/api/blogs/${wrongId}`)
-                .send(updateBlog)
+            .send(updateBlog)
 
         assert.equal(update.status, 400)
     })

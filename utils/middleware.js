@@ -36,11 +36,12 @@ const tokenExtractor = (request, response, next) => {
     if (authorization && authorization.startsWith('Bearer ')) {
         request.token = authorization.replace('Bearer ', '') //eliminamos la palabra y el espacio para que solo quede el token
     }
-
+    // console.log(request.token)
     next()
 }
 
 const userExtractor = async (request, response, next) => {
+    // console.log(request.token)
     let decodedToken;
         try {
             decodedToken = jwt.verify(request.token, process.env.SECRET)

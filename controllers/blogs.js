@@ -9,7 +9,7 @@ blogsRouter.get('/', async (request, response) => {
     try {
         let blogs = await Blog.find({})
             .populate('user', { username: 1, name: 1, id: 1 })
-        console.log(blogs)
+        // console.log(blogs)
         response.json(blogs)
     } catch (error) {
         response.status(400).send('Error happened while getting all blogs:')
@@ -28,6 +28,8 @@ blogsRouter.get('/', async (request, response) => {
 blogsRouter.post('/', userExtractor, async (request, response, next) => {
     const user = request.user
     // console.log(user)
+
+    // console.log(user)
     const newBlog = new Blog({
         title: request.body.title,
         author: request.body.author,
@@ -35,7 +37,6 @@ blogsRouter.post('/', userExtractor, async (request, response, next) => {
         likes: request.body.likes,
         user: user.id
     })
-
     const savedBlog = await newBlog.save()
     user.blogs = user.blogs.concat(savedBlog._id)
     await user.save()
@@ -52,7 +53,7 @@ blogsRouter.delete('/:id', userExtractor, async (request, response, next) => {
     let blog = await Blog.findById(request.params.id)
     const user = request.user
 
-    if(user.id.toString() !== blog.user.toString()){
+    if (user.id.toString() !== blog.user.toString()) {
         return response.status(401).json({ error: "user don't have permission to delete the blog" })
     }
 
