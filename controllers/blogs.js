@@ -3,6 +3,7 @@ const Blog = require('../models/blog')
 const User = require('../models/user')
 const jwt = require('jsonwebtoken')
 const userExtractor = require('../utils/middleware').userExtractor
+const mostBlogs = require('../utils/list_helper').mostBlogs
 // const { request } = require('../app')
 
 blogsRouter.get('/', async (request, response) => {
@@ -14,6 +15,13 @@ blogsRouter.get('/', async (request, response) => {
     } catch (error) {
         response.status(400).send('Error happened while getting all blogs:')
     }
+})
+
+blogsRouter.get('/mostblogs', async(request, response) => {
+    let blogs = await Blog.find({})
+    // console.log(blogs)
+    let author = mostBlogs(blogs)
+    response.json(author)
 })
 
 //auxiliary function that helps us to decode de token later

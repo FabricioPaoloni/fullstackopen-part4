@@ -50,9 +50,18 @@ Exercise 4.3:
     3. create tests/***.test.js         done
     4. creat test script "test": "node --test"      done
 
+Ejercicio 4.4:
+-COMPLETADO-
+
+Ejercicio 4.5:
+-COMPLETADO-
 
 Ejercicio 4.6:
 Tengo que crear una función que reciba un arreglo de BLOGS y devuelva el autor con la mayor cantidad de blogs escritos
+- Creada la función mostBlogs en el archivo /utils/list_helper.js
+- Cree una nueva ruta en el archivo /controllers/blogs.js para hacer una solicitud GET a la api /api/blogs/mostblogs que utiliza la función mostBlogs para mostrar el usuario que más blogs tiene creados
+-Completado al final de la unidad 4-
+
 
 Ejercicio 4.8: Blog List Tests, step 1
 En curso -> ya di de alta el test environment e instalé superterst. Queda crear los test y reescribir la app
@@ -175,3 +184,4 @@ Now create a new middleware called userExtractor that identifies the user relate
 
 4.23*: Blog List Expansion, step 11
 After adding token-based authentication the tests for adding a new blog broke down. Fix them. Also, write a new test to ensure adding a blog fails with the proper status code 401 Unauthorized if a token is not provided.
+-COMPLETADO-
