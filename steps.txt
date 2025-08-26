@@ -62,6 +62,9 @@ Tengo que crear una función que reciba un arreglo de BLOGS y devuelva el autor 
 - Cree una nueva ruta en el archivo /controllers/blogs.js para hacer una solicitud GET a la api /api/blogs/mostblogs que utiliza la función mostBlogs para mostrar el usuario que más blogs tiene creados
 -Completado al final de la unidad 4-
 
+Ejercicio 4.7: 
+Debería ser similar al anterior pero esta vez sumando los likes y devolviendo dicho valor
+-COMPLETADO al final de la unidad 4-
 
 Ejercicio 4.8: Blog List Tests, step 1
 En curso -> ya di de alta el test environment e instalé superterst. Queda crear los test y reescribir la app

@@ -4,6 +4,7 @@ const User = require('../models/user')
 const jwt = require('jsonwebtoken')
 const userExtractor = require('../utils/middleware').userExtractor
 const mostBlogs = require('../utils/list_helper').mostBlogs
+const mostLikes = require('../utils/list_helper').mostLikes
 // const { request } = require('../app')
 
 blogsRouter.get('/', async (request, response) => {
@@ -21,6 +22,12 @@ blogsRouter.get('/mostblogs', async(request, response) => {
     let blogs = await Blog.find({})
     // console.log(blogs)
     let author = mostBlogs(blogs)
+    response.json(author)
+})
+
+blogsRouter.get('/mostlikes', async (request, response) => {
+    let blogs = await Blog.find({})
+    let author = mostLikes(blogs)
     response.json(author)
 })
 
