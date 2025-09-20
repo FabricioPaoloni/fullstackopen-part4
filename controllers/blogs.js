@@ -53,6 +53,7 @@ blogsRouter.post('/', userExtractor, async (request, response, next) => {
         user: user.id
     })
     const savedBlog = await newBlog.save()
+    await savedBlog.populate('user', { username: 1, name: 1, id: 1 })
     user.blogs = user.blogs.concat(savedBlog._id)
     await user.save()
 
@@ -77,7 +78,9 @@ blogsRouter.delete('/:id', userExtractor, async (request, response, next) => {
 
 })
 
-blogsRouter.put('/:id', async (request, response) => {
+blogsRouter.put('/:id', userExtractor, async (request, response) => {
+    const user = request.user
+    // console.log(user)
     if (request.params.id.length !== 24) {
         response.status(400).json({ error: 'Invalid ID' })
     } else {
